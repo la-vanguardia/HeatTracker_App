@@ -1,14 +1,6 @@
-import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-
 from Panels import *
 
 from App import *
-
-matplotlib.use('WXAgg')
-
-
 
 #datos de prueba 
 

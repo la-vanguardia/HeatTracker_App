@@ -1,9 +1,14 @@
 import wx 
 
+import matplotlib
 from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
 from matplotlib.backends.backend_wx import NavigationToolbar2Wx as NavigationToolbar
 from matplotlib.figure import Figure
 
+import numpy as np
+
+
+matplotlib.use('WXAgg')
 
 class CanvasPanel(wx.Panel):
     def __init__(self, parent):
@@ -23,8 +28,20 @@ class CanvasPanel(wx.Panel):
         self.sizer.Add(self.toolbar, 0,  wx.CENTER | wx.ALL,20) 
         self.SetSizer(self.sizer) #Seteo el sizer de nuestro Panel
         self.Fit()
+        self.timer = wx.Timer( self )
+
+        self.Bind(wx.EVT_TIMER, self._time_interval, self.timer)
+
+        self.timer.Start( 3000 ) 
+
+    def _time_interval( self, event ):
+        #TODO: Mockup de data se debe cambiar por la implementacion de RS232
+        data = np.random.randint( -70, 150, ( 255, 255 ) )
+        self.draw( data )
+
 
     def draw(self, data):
-        heatmap = self.axes.imshow(data, cmap='viridis')
-        self.figure.colorbar(heatmap, ax = self.axes)
+        self.figure.gca()
+        self.axes.imshow( data )
+        self.canvas.draw()
         

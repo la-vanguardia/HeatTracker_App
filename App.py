@@ -1,13 +1,13 @@
 import wx 
 from Panels import * 
 
-class App( wx.App ): 
+class App(): 
 
-    def __init__( self ):
+    def __init__( self, title_app = 'Heater mapping' ):
         self._app = wx.App()
 
         #Ventana principal
-        self._fr = wx.Frame( None, title='Heat Tracker', size =(900,700) )
+        self._fr = wx.Frame( None, title= title_app , size =(900,700) )
         self._fr.Center( True )
         self._fr.SetBackgroundColour( wx.WHITE )
         frsizer = wx.BoxSizer( wx.HORIZONTAL )
@@ -29,6 +29,7 @@ class App( wx.App ):
 
     def draw( self, data ):
         self._canvas_panel.draw( data )
+
 
     def run( self ):
         self._fr.Show()
