@@ -22,13 +22,14 @@ class App():
         self._accion_panel= AccionPanel( self._fr )
 
         #Sizer ventana principal
-        frsizer.Add( self._accion_panel ,wx.EXPAND)
+        frsizer.Add( self._accion_panel,0 ,wx.EXPAND)
 
-        frsizer.Add( self._canvas_panel ,0,wx.EXPAND)
+        frsizer.Add( self._canvas_panel ,1,wx.EXPAND)
         self._fr.SetSizer(frsizer)
 
     def draw( self, data ):
         self._canvas_panel.draw( data )
+       
 
 
     def run( self ):
