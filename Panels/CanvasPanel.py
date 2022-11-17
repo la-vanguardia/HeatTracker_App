@@ -56,7 +56,7 @@ class CanvasPanel(wx.Panel):
 
     def draw(self, data):
         self._figure.gca()
-        c=self._axes.imshow(data,cmap='cool', interpolation='none')
+        c = self._axes.imshow(data,cmap='cool', interpolation='none')
         
         self._canvas.draw()
         
